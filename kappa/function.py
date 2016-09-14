@@ -63,7 +63,7 @@ class Function(object):
         dependencies_path = []
         for requirement in requirements:
             os.system('pip install -r %s -t %s' % (requirement, lib_dir))
-            dependencies_path += lib_dir + '/' + requirement
+            dependencies_path += [lib_dir + '/' + requirement]
         return dependencies_path
 
     @property

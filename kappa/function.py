@@ -57,7 +57,14 @@ class Function(object):
 
     @property
     def dependencies(self):
-        return self._config.get('dependencies', list())
+        lib_dir = self._config.get('lib_dir')
+        requirements = self._config.get('dependencies', list())
+
+        dependencies_path = []
+        for requirement in requirements:
+            os.system('pip install -r %s -t %s' % (requirement, lib_dir))
+            dependencies_path += lib_dir + '/' + requirement
+        return dependencies_path
 
     @property
     def description(self):

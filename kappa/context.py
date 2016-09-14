@@ -137,6 +137,10 @@ class Context(object):
         return self.config.get('source', '_src')
 
     @property
+    def lib_dir(self):
+        return self.config.get('lib', '_lib')
+
+    @property
     def unit_test_runner(self):
         return self.config.get('unit_test_runner',
                                'nosetests . ../{}/unit/'.format(self.test_dir))

@@ -62,7 +62,7 @@ class Function(object):
 
         for requirement in requirements:
             os.system('pip install %s -t %s' % (requirement, lib_dir))
-        return lib_dir
+        return [lib_dir]
 
     @property
     def description(self):

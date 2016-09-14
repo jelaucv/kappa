@@ -57,7 +57,7 @@ class Function(object):
 
     @property
     def dependencies(self):
-        lib_dir = '/'.join([self._context.lib_dir, self._config.get('name')])
+        lib_dir = '/'.join([self._context.lib_dir, self.name])
         requirements = self._config.get('dependencies', list())
 
         for requirement in requirements:

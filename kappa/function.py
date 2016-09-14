@@ -57,13 +57,13 @@ class Function(object):
 
     @property
     def dependencies(self):
-        lib_dir = self._context.lib_dir
+        lib_dir = '/'.join([self._context.lib_dir, self._config.get('name')])
         requirements = self._config.get('dependencies', list())
 
         dependencies_path = []
         for requirement in requirements:
             os.system('pip install %s -t %s' % (requirement, lib_dir))
-            dependencies_path += [lib_dir + '/' + requirement]
+            dependencies_path += ['/'.join[lib_dir, requirement]]
         return dependencies_path
 
     @property

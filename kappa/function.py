@@ -66,7 +66,7 @@ class Function(object):
 
     @property
     def local_location(self):
-        return '/'.join([self._context.lambda_dir, self.name])
+        return self._context.lambda_location
 
     @property
     def description(self):

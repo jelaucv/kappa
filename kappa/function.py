@@ -65,6 +65,10 @@ class Function(object):
         return [lib_dir]
 
     @property
+    def location(self):
+        return '/'.join([self._context.lambda_dir, self.name])
+
+    @property
     def description(self):
         return self._config['description']
 
@@ -170,7 +174,7 @@ class Function(object):
         # changed and needs to be updated so return True.
         changed = True
         self._copy_config_file()
-        files = [] + self.dependencies + [self._context.source_dir]
+        files = [self.location] + self.dependencies + [self._context.source_dir]
         self.zip_lambda_function(self.zipfile_name, files)
         m = hashlib.md5()
         with open(self.zipfile_name, 'rb') as fp:

@@ -137,6 +137,10 @@ class Context(object):
         return self.config.get('source', '_src')
 
     @property
+    def lambda_dir(self):
+        return self.config.get('location', '_lambda')
+
+    @property
     def lib_dir(self):
         return self.config.get('lib', '_lib')
 
